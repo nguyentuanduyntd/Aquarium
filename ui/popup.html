@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Tab Aquarium</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-mode="popup">
+  <header class="bar">
+    <div class="brand"><span class="logo">🐠</span><b>Tab Aquarium</b></div>
+    <div class="chips">
+      <span class="chip" id="chipFish">🐟 0 cá</span>
+      <span class="chip warn zero" id="chipDead" title="Cá lật bụng">💀 0</span>
+    </div>
+    <div class="actions">
+      <button class="btn icon" id="btnSound" title="Bật âm thanh">🔇</button>
+      <button class="btn danger" id="btnClean" title="Vớt hết cá lật bụng (đóng các tab đó)">🧹 Dọn bể</button>
+      <button class="btn" id="btnFull">⛶ Toàn màn hình</button>
+      <button class="btn icon" id="btnSettings" title="Cài đặt">⚙️</button>
+    </div>
+  </header>
+  <main class="tank-wrap"><canvas id="tank" aria-label="Bể cá, mỗi con cá là một tab"></canvas></main>
+  <div id="tooltip" class="tooltip glass"></div>
+  <div id="modal" class="modal"></div>
+  <div id="toast" class="toast glass"></div>
+  <script type="module" src="../engine/main.js"></script>
+</body>
+</html>

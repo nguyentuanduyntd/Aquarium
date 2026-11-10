@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tab Aquarium – store screenshots</title>
+<!-- Khung ảnh chụp màn hình cho store (1280×800), chạy bản demo bên trong iframe.
+     Mở qua http server: tools/shots.html?n=1 | 2 | 3 | 4 -->
+<style>
+  html, body { margin: 0; width: 1280px; height: 800px; overflow: hidden; }
+  body { background: linear-gradient(180deg, #0d4a73 0%, #062440 100%); font-family: "Segoe UI", system-ui, -apple-system, sans-serif; }
+  h1 { margin: 0; height: 104px; display: flex; align-items: center; justify-content: center;
+       color: #fff; font-size: 34px; font-weight: 600; letter-spacing: 0.2px; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+  .frame { position: absolute; border-radius: 14px; overflow: hidden; box-shadow: 0 18px 50px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.12); }
+  iframe { border: 0; display: block; transform-origin: 0 0; }
+</style>
+</head>
+<body>
+<h1 id="cap"></h1>
+<div class="frame" id="frame"><iframe id="f"></iframe></div>
+<script>
+const n = +(new URLSearchParams(location.search).get('n') || 1);
+const SHOTS = {
+  1: { cap: 'Every open tab becomes a fish in your aquarium', page: 'aquarium.html', w: 1366, h: 768, mode: 'day' },
+  2: { cap: 'Day and night follow your local time', page: 'aquarium.html', w: 1366, h: 768, mode: 'night' },
+  3: { cap: 'Hover a fish to see its tab, memory use and idle time', page: 'aquarium.html', w: 1366, h: 768, mode: 'day', hover: true },
+  4: { cap: 'Peek at your tank right from the toolbar', page: 'popup.html', w: 780, h: 560, mode: 'day' }
+};
+const s = SHOTS[n];
+document.getElementById('cap').textContent = s.cap;
+const TOP = 104, BOTTOM = 28;
+const k = Math.min((800 - TOP - BOTTOM) / s.h, 1180 / s.w, 1.15);
+const fw = Math.round(s.w * k), fh = Math.round(s.h * k);
+const frame = document.getElementById('frame');
+Object.assign(frame.style, { width: fw + 'px', height: fh + 'px', left: Math.round((1280 - fw) / 2) + 'px', top: TOP + 'px' });
+const f = document.getElementById('f');
+Object.assign(f.style, { width: s.w + 'px', height: s.h + 'px', transform: `scale(${k})` });
+f.src = '../ui/' + s.page;
+
+f.onload = () => {
+  const w = f.contentWindow, d = f.contentDocument;
+  const st = d.createElement('style');
+  st.textContent = '.toast{display:none!important}'; // ẩn thông báo "chế độ demo"
+  d.head.appendChild(st);
+  const go = () => {
+    const A = w.__aquarium;
+    if (!A || !A.fishes.size) return setTimeout(go, 100);
+    A.src.saveSettings({ daynight: s.mode });
+    if (s.hover) setTimeout(() => hover(A), 2000);
+  };
+  go();
+};
+
+function hover(A) {
+  const { world } = A;
+  const R = world.W - (world.rightInset || 0) - 320;
+  const ok = (x) => x.mode === 'swim' && x.hv < 1 && x.x > 160 && x.x < R && x.y > world.surfaceY + 140 && x.y < world.H * 0.7;
+  const fish = [...A.fishes.values()].filter(ok).sort((a, b) => b.Lv - a.Lv)[0] || [...A.fishes.values()][0];
+  const canvas = f.contentDocument.getElementById('tank');
+  const move = () => {
+    const ev = new f.contentWindow.PointerEvent('pointermove', { clientX: fish.x, clientY: fish.y, bubbles: true });
+    canvas.dispatchEvent(ev);
+  };
+  move(); setInterval(move, 40);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tab Aquarium</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-mode="full">
+  <main class="tank-wrap"><canvas id="tank" aria-label="Bể cá, mỗi con cá là một tab"></canvas></main>
+
+  <div class="hud-left glass">
+    <h1><span>🐠</span> Tab Aquarium</h1>
+    <p id="subTitle">Đang thả cá…</p>
+  </div>
+
+  <div class="hud-right glass">
+    <button class="btn icon" id="btnSound" title="Bật âm thanh">🔇</button>
+    <button class="btn danger" id="btnClean" title="Vớt hết cá lật bụng (đóng các tab đó)">🧹 Dọn bể</button>
+    <button class="btn icon" id="btnSettings" title="Cài đặt">⚙️</button>
+    <button class="btn icon" id="btnPanel" title="Ẩn/hiện thống kê">📊</button>
+  </div>
+
+  <aside id="stats" class="panel glass">
+    <div class="panel-head"><b>Thống kê bể</b></div>
+    <div class="big"><b id="sTotal">0</b>cá đang bơi</div>
+    <div class="state-bar" id="sBar"></div>
+    <div class="legend" id="sLegend"></div>
+    <div class="kv"><span>Tổng bộ nhớ ước tính</span><b id="sMem">–</b></div>
+    <div id="sFeatures"></div>
+    <div class="list-title">Xếp theo độ đói</div>
+    <ul id="sList"></ul>
+  </aside>
+
+  <div id="tooltip" class="tooltip glass"></div>
+  <div id="modal" class="modal"></div>
+  <div id="toast" class="toast glass"></div>
+  <script type="module" src="../engine/main.js"></script>
+</body>
+</html>
