@@ -1,6 +1,6 @@
 # Permissions audit – Tab Aquarium v1.0.0
 
-Tạo tự động bởi `tools/build_zip.py` lúc 2026-11-10 17:37.
+Tạo tự động bởi `tools/build_zip.py` lúc 2026-11-10 17:55.
 
 ## 1. Kiểm tra manifest
 
@@ -59,8 +59,6 @@ Tạo tự động bởi `tools/build_zip.py` lúc 2026-11-10 17:37.
 ## 5. Ghi chú
 
 - `tabs`: vì đã có host permission `<all_urls>`, trình duyệt vẫn trả về `url`/`title` của tab ngay cả khi bỏ `tabs`. Giữ `tabs` để chức năng không phụ thuộc vào việc người dùng có thu hẹp quyền truy cập trang hay không (trong cài đặt tiện ích, người dùng có thể đổi "On all sites" thành "On click"). Nếu reviewer yêu cầu tối giản, đây là quyền có thể cân nhắc bỏ.
-- homepage_url chưa điền (tools/publish-config.json) -> chưa đưa vào manifest trong zip
-- author chưa điền (tools/publish-config.json) -> chưa đưa vào manifest trong zip
 
 ## 6. Kết quả
 

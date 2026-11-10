@@ -1,11 +1,3 @@
-<!--
-GHI CHÚ CHO BẠN (không phải nội dung chính sách):
-Partner Center cần một ĐƯỜNG LINK, không nhận file. Cách lấy link miễn phí bằng GitHub Pages:
-1. Tạo repo công khai trên github.com (ví dụ `tab-aquarium-privacy`), thay {{EMAIL}} trong privacy-policy.html rồi upload file đó, đổi tên thành `index.html`.
-2. Vào Settings → Pages → Source: "Deploy from a branch", Branch: `main`, thư mục `/ (root)` → Save.
-3. Sau 1–2 phút, link sẽ là https://<tên-github>.github.io/tab-aquarium-privacy/ – dán link này vào ô Privacy policy URL.
--->
-
 # Tab Aquarium – Privacy Policy
 
 _Effective date: November 10, 2026_
@@ -41,7 +33,7 @@ If this policy changes, the new version will be published at this address with a
 
 ## 6. Contact
 
-Questions about this policy: **{{EMAIL}}**
+Questions about this policy: **mrduynguyen2005@gmail.com**
 
 ---
 
@@ -80,4 +72,4 @@ Nếu chính sách này thay đổi, bản mới sẽ được đăng tại chí
 
 ## 6. Liên hệ
 
-Mọi câu hỏi về chính sách này: **{{EMAIL}}**
+Mọi câu hỏi về chính sách này: **mrduynguyen2005@gmail.com**

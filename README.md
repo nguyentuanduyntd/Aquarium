@@ -1,4 +1,48 @@
-# 🐠 Tab Aquarium
+# Tab Aquarium
+
+**Your open tabs, as a living aquarium.** A Microsoft Edge extension (Manifest V3) that draws every open tab as a fish: heavy tabs become big fish, tabs you ignore get hungry and finally float belly-up.
+
+![Tab Aquarium – every open tab becomes a fish](docs/assets/screenshot-1-1280x800.png)
+
+| | |
+|---|---|
+| ![Night mode](docs/assets/screenshot-2-1280x800.png) | ![Tab details on hover](docs/assets/screenshot-3-1280x800.png) |
+
+## Features
+
+- **Size = memory:** heavier tabs are bigger, rounder fish; the heaviest tab becomes a shark.
+- **Hunger = idle time:** healthy → peckish → hungry → dying → belly-up. Time limits are configurable.
+- **Click a fish** to feed it and switch to that tab.
+- **Net a belly-up fish**, press *Clean tank*, or **drag the fishing boat's hook** onto a fish to close tabs (always with a confirmation).
+- Species follow the website, pinned tabs are seahorses, tab groups swim together.
+- Day/night lighting from your local time, optional water sounds.
+- Memory is an **estimate** (JS heap, DOM size, resources, media); the browser does not expose real per-tab RAM to extensions.
+
+## Install manually (Load unpacked)
+
+1. Download or clone this repository.
+2. Open `edge://extensions` and turn on **Developer mode**.
+3. Click **Load unpacked** and select the repository folder (the one containing `manifest.json`).
+4. Pin the fish icon to the toolbar.
+
+The interface is currently in Vietnamese.
+
+## Privacy
+
+Everything stays on your device: no server, no analytics, no ads, no network requests.
+Read the full policy: **https://nguyentuanduyntd.github.io/Aquarium/**
+
+## Publishing
+
+[`store-submission/`](store-submission/) contains everything prepared for Microsoft Edge Add-ons: listing texts (EN/VI), images, privacy policy, permission justifications and a step-by-step submission guide. Rebuild the package with `python tools/build_zip.py` and the images with `python tools/render_images.py`.
+
+## License
+
+[MIT](LICENSE) © 2026 DUYIT
+
+---
+
+## 🇻🇳 Tiếng Việt
 
 Extension cho Microsoft Edge (và các trình duyệt nhân Chromium) biến các tab đang mở thành một bể cá sống động. Mỗi tab là một con cá:
 
@@ -6,7 +50,7 @@ Extension cho Microsoft Edge (và các trình duyệt nhân Chromium) biến cá
 - Tab bỏ lâu không mở thì cá đói dần qua 5 trạng thái: 😊 Khỏe → 😋 Hơi đói → 😟 Đói → 😵 Sắp chết → 💀 Lật bụng.
 - Đóng tab thì cá vẫy chào 👋 rồi bơi ra khỏi bể. Mở tab mới thì cá rơi "tõm" xuống nước.
 
-## Cài đặt
+### Cài đặt
 
 1. Giải nén file zip ra một thư mục.
 2. Mở Edge, vào `edge://extensions` (Chrome: `chrome://extensions`).
@@ -16,7 +60,7 @@ Extension cho Microsoft Edge (và các trình duyệt nhân Chromium) biến cá
 
 Chạy được trên Chrome, Edge, Brave và các trình duyệt nhân Chromium khác.
 
-## Cách dùng
+### Cách dùng
 
 | Thao tác | Kết quả |
 |---|---|
@@ -32,7 +76,7 @@ Chạy được trên Chrome, Edge, Brave và các trình duyệt nhân Chromium
 
 **Thử nhanh:** vào Cài đặt, bấm "⚡ Thử nhanh (1 · 2 · 3 · 4 phút)" rồi Lưu. Sau 4 phút không mở, tab sẽ lật bụng. Bấm "Mặc định" để quay lại.
 
-## Các loài cá
+### Các loài cá
 
 - Loài cá được chọn theo tên miền, nên cùng một trang web luôn ra cùng một loài: cá hề, cá thần tiên, cá betta, cá nóc, cá vàng, cá đuôi gai, cá đuối.
 - Một số trang có loài riêng: YouTube là cá đỏ, GitHub là bạch tuộc, Gmail và Outlook là cá chuồn ngậm phong thư.
@@ -43,7 +87,7 @@ Chạy được trên Chrome, Edge, Brave và các trình duyệt nhân Chromium
 
 Ánh sáng đổi theo giờ thật trên máy. Ban ngày có tia nắng, hoàng hôn ngả cam, ban đêm có sứa phát sáng và cửa sổ lâu đài sáng đèn.
 
-## Về bộ nhớ
+### Về bộ nhớ
 
 Trình duyệt **không** cho extension đọc RAM thật của từng tab (API `chrome.processes` chỉ có ở bản Dev). Vì vậy Tab Aquarium **ước tính** độ nặng từ:
 
@@ -54,7 +98,7 @@ Trình duyệt **không** cho extension đọc RAM thật của từng tab (API 
 
 Chỉ số được cập nhật mỗi 30 giây. Các trang hệ thống (`edge://`, `chrome://`), cửa hàng tiện ích hay trình xem PDF không đo được nên dùng kích thước trung bình. Con số dùng để so sánh tương đối giữa các tab, không phải số RAM chính xác.
 
-## Quyền truy cập & quyền riêng tư
+### Quyền truy cập & quyền riêng tư
 
 - `tabs`, `tabGroups`: đọc danh sách tab, chuyển và đóng tab khi bạn yêu cầu.
 - `scripting` + quyền trên mọi trang: chạy một đoạn đo nhỏ (chỉ đọc số liệu) để ước tính độ nặng.
@@ -63,7 +107,7 @@ Chỉ số được cập nhật mỗi 30 giây. Các trang hệ thống (`edge:
 
 Toàn bộ dữ liệu nằm trong máy bạn, không gửi đi đâu.
 
-## Cấu trúc
+### Cấu trúc
 
 ```
 manifest.json
@@ -85,3 +129,7 @@ Mọi hình ảnh đều vẽ bằng code (Canvas 2D), không dùng thư viện 
 Mở `ui/aquarium.html` qua một web server cục bộ (không cài làm extension) sẽ chạy **chế độ demo** với dữ liệu tab giả lập, tiện để chỉnh giao diện.
 
 **Phím test (dành cho nhà phát triển):** đặt `DEV_KEYS = true` trong `engine/main.js` rồi bấm `1`–`4` để ép cả bể sang Hơi đói / Đói / Sắp chết / Lật bụng, `0` hoặc `Esc` để về bình thường. Luôn để `false` trong bản đăng store.
+
+## Giấy phép
+
+[MIT](LICENSE) © 2026 DUYIT

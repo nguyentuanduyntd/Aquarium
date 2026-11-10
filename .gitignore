@@ -1,0 +1,19 @@
+# Gói build – tạo lại bằng: python tools/build_zip.py
+*.zip
+dist/
+
+# Hệ điều hành / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Log, phụ thuộc, file tạm
+*.log
+node_modules/
+__pycache__/
+*.tmp
+
+# Profile trình duyệt dùng khi chụp ảnh tự động
+prof*/

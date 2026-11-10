@@ -62,5 +62,5 @@ The interface is currently in Vietnamese.
 
 | | |
 |---|---|
-| Support contact | `{{EMAIL}}` |
-| Website | `{{HOMEPAGE_URL}}` |
+| Support contact | `mrduynguyen2005@gmail.com` |
+| Website | `https://nguyentuanduyntd.github.io/Aquarium/` |

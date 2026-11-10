@@ -12,6 +12,10 @@ try:
 except Exception:
     pass
 
+with open(os.path.join(ROOT, 'tools', 'publish-config.json'), encoding='utf-8') as f:
+    CFG = json.load(f)
+SUPPORT = [('Support contact', CFG['author_email']), ('Website', CFG['homepage_url'])]
+
 def short_desc(lang):
     with open(os.path.join(ROOT, '_locales', lang, 'messages.json'), encoding='utf-8') as f:
         return json.load(f)['extDescription']['message']
@@ -69,7 +73,7 @@ LANGS = {
         cat=('**Recommended: Entertainment.** Tab Aquarium is first of all a playful, ambient view of your tabs: animated fish, day/night light, sounds. '
              'Users browsing Entertainment expect this kind of visual toy, and the listing will not be compared with serious tab managers.\n\n'
              '**Option 2: Productivity.** Choose this if you want to emphasise the practical side: finding heavy tabs and closing forgotten ones.'),
-        support_rows=[('Support contact', '{{EMAIL}}'), ('Website', '{{HOMEPAGE_URL}}')],
+        support_rows=SUPPORT,
     ),
     'vi': dict(
         title='Store listing – Tiếng Việt', desc=VI_DESC, terms=VI_TERMS,
@@ -81,7 +85,7 @@ LANGS = {
              'Người tìm trong mục Giải trí mong đợi kiểu "đồ chơi trực quan" này, và extension không bị so sánh với các trình quản lý tab chuyên nghiệp.\n\n'
              '**Phương án 2: Productivity (Năng suất).** Chọn mục này nếu muốn nhấn mạnh mặt hữu ích: tìm tab nặng, đóng tab bị bỏ quên.\n\n'
              '_Danh mục chọn một lần ở bước Properties, áp dụng cho mọi ngôn ngữ._'),
-        support_rows=[('Support contact', '{{EMAIL}}'), ('Website', '{{HOMEPAGE_URL}}')],
+        support_rows=SUPPORT,
     ),
 }
 

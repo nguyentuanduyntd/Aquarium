@@ -4,15 +4,12 @@ Toàn bộ quá trình **miễn phí**. Làm theo đúng thứ tự màn hình c
 
 > Tài liệu chính thức đã đối chiếu ngày 10/11/2026 (nguồn ở cuối file). Partner Center có thể đổi giao diện; nếu tên ô khác một chút, tìm ô có ý nghĩa tương đương.
 
-## Chuẩn bị trước (khoảng 15 phút)
+## Chuẩn bị trước
 
-1. **Đưa chính sách quyền riêng tư lên mạng** (Partner Center chỉ nhận link, không nhận file):
-   1. Mở `privacy-policy.html`, thay cả hai chỗ `{{EMAIL}}` bằng email liên hệ của bạn.
-   2. Tạo repo **công khai** trên github.com (ví dụ `tab-aquarium`), upload file đó và đổi tên thành `index.html`.
-   3. Settings → Pages → Source: *Deploy from a branch*, Branch: `main`, thư mục `/ (root)` → Save. Sau 1–2 phút có link `https://<tên-github>.github.io/tab-aquarium/`.
-2. Link GitHub Pages ở trên có thể dùng luôn làm **website** (`{{HOMEPAGE_URL}}`). Microsoft yêu cầu website phải là trang của bạn, không được là trang listing trên store.
-3. (Tuỳ chọn) Điền `homepage_url` và `author_email` vào `tools/publish-config.json`, rồi chạy `python tools/build_zip.py` để tạo lại zip có 2 thông tin này. Bỏ qua bước này thì zip hiện tại vẫn hợp lệ.
-4. Thay `{{EMAIL}}` và `{{HOMEPAGE_URL}}` trong `listing-en.md` và `listing-vi.md`.
+Đã xong:
+- Chính sách quyền riêng tư được đăng qua GitHub Pages từ thư mục `docs/` của repo `nguyentuanduyntd/Aquarium`: **https://nguyentuanduyntd.github.io/Aquarium/**. Link này dùng cho cả **Privacy policy URL** và **Website**.
+- Email hỗ trợ **mrduynguyen2005@gmail.com** đã được điền vào privacy policy và listing.
+- `manifest.json` đã có `author` = DUYIT và `homepage_url` = link trên; gói zip đã được tạo lại.
 
 ## Bước 1 – Đăng ký tài khoản nhà phát triển
 
@@ -37,8 +34,8 @@ Toàn bộ quá trình **miễn phí**. Làm theo đúng thứ tự màn hình c
 | Ô | Điền gì |
 |---|---|
 | Category | **Entertainment** (phương án 2: Productivity; lý do trong `listing-en.md`) |
-| Website | `{{HOMEPAGE_URL}}` |
-| Support contact details | `{{EMAIL}}` |
+| Website | `https://nguyentuanduyntd.github.io/Aquarium/` |
+| Support contact details | `mrduynguyen2005@gmail.com` |
 | Mature content | **Không** đánh dấu (extension không có nội dung người lớn) |
 | Giá / mua trong ứng dụng | Extension miễn phí, không có tính năng trả phí. Nếu form có câu hỏi này thì chọn **No** |
 
@@ -103,15 +100,15 @@ Mở **`listing-en.md`**:
 - Theo chính sách 1.1.2, listing và giao diện không được nhắc tới trình duyệt khác, nên mô tả viết "the browser" thay vì "Chromium". Chữ "Chrome" trong giao diện đã được bỏ (xem `CHANGES.md`).
 - Emoji trên các nút của giao diện trong ảnh chụp được vẽ bằng font Segoe UI Emoji của Windows. Dòng chú thích và các ảnh logo/promo **không** có emoji.
 
-## ✅ Checklist những gì bạn còn phải tự điền
+## ✅ Checklist trước khi bấm Publish
 
-- [ ] `{{EMAIL}}` trong `privacy-policy.html` (2 chỗ) và `privacy-policy.md` (2 chỗ)
-- [ ] `{{EMAIL}}` trong `listing-en.md` và `listing-vi.md` (mục Support contact)
-- [ ] `{{HOMEPAGE_URL}}` trong `listing-en.md` và `listing-vi.md` (mục Website)
-- [ ] `{{HOMEPAGE_URL}}` và `{{EMAIL}}` trong `tools/publish-config.json` (tuỳ chọn, rồi chạy lại `python tools/build_zip.py`)
-- [ ] Link chính sách quyền riêng tư (sau khi đưa lên GitHub Pages)
+- [x] Email hỗ trợ (mrduynguyen2005@gmail.com) trong privacy policy và listing
+- [x] Website / Privacy policy URL (https://nguyentuanduyntd.github.io/Aquarium/)
+- [x] `author` và `homepage_url` trong manifest, zip đã tạo lại
+- [x] Nguồn gốc bộ icon: tác giả tự tạo
+- [ ] Bật GitHub Pages (Settings → Pages → `master` / `/docs`) và mở thử link trên
 - [ ] Publisher display name khi đăng ký tài khoản (hiện công khai)
-- [ ] Xác nhận nguồn gốc bộ icon `icons/icon16–128.png` (tự tạo hay lấy từ đâu, có quyền dùng không)
+- [ ] Sau khi được duyệt: thay dòng "coming soon / sắp có" trong `docs/index.html` bằng link thật trên Edge Add-ons
 
 ## Nguồn
 

@@ -13,7 +13,17 @@ Không thay đổi logic chức năng. Chỉ sửa những gì cần để qua k
 | `engine/data.js` | Tên miền hiển thị của trang `edge://`/`chrome://` đổi từ `chrome` thành `trang hệ thống` | Cùng lý do: tooltip từng hiện chữ "chrome" cho trang hệ thống của Edge. |
 | `tools/` (mới) | `build_zip.py`, `render_images.py`, `make_listing.py`, `art.html`, `shots.html`, `publish-config.json` | Script đóng gói, tạo ảnh và văn bản listing. Không nằm trong zip. |
 
-`homepage_url` và `author` **chưa** được thêm vào `manifest.json`: giá trị placeholder như `{{HOMEPAGE_URL}}` không phải URL hợp lệ, trình duyệt sẽ từ chối nạp extension. Điền vào `tools/publish-config.json` rồi chạy lại `python tools/build_zip.py`, script sẽ tự chèn vào manifest trong zip.
+## Đợt đưa lên GitHub
+
+| File | Thay đổi |
+|---|---|
+| `manifest.json` | Thêm `"author": "DUYIT"` và `"homepage_url": "https://nguyentuanduyntd.github.io/Aquarium/"`. Đã nạp thử trong Edge, không lỗi |
+| `store-submission/tab-aquarium-v1.0.0.zip` | Tạo lại vì manifest đổi. Không còn đưa lên git (`.gitignore`) |
+| `store-submission/privacy-policy.*`, `listing-*.md` | Điền email hỗ trợ và website thật |
+| `tools/publish-config.json`, `tools/make_listing.py` | Lưu email/website thật; listing đọc từ config thay vì placeholder |
+| `docs/` (mới) | Trang GitHub Pages: giới thiệu ngắn + privacy policy (nội dung policy giữ nguyên) + ảnh |
+| `README.md` | Viết lại: phần tiếng Anh ở trên, README tiếng Việt cũ giữ nguyên ở dưới |
+| `LICENSE` (mới), `.gitignore` (mới) | MIT © 2026 DUYIT; bỏ qua file zip và file tạm |
 
 ## Đã làm trước đó (cùng phiên làm việc)
 
